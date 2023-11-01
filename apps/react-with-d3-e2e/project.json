@@ -1,0 +1,33 @@
+{
+  "name": "react-with-d3-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/react-with-d3-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/react-with-d3-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "react-with-d3:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "react-with-d3:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "react-with-d3:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/react-with-d3-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "implicitDependencies": ["react-with-d3"],
+  "tags": []
+}
